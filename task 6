@@ -1,0 +1,38 @@
+#task6
+from functools import lru_cache
+
+calls = 0
+
+def ways_naive(n):
+    global calls
+    calls += 1
+
+    if n == 0 or n == 1:
+        return 1
+
+    return ways_naive(n - 1) + ways_naive(n - 2)
+
+@lru_cache(maxsize=None)
+def ways_memo(n):
+    global calls
+    calls += 1
+
+    if n == 0 or n == 1:
+        return 1
+
+    return ways_memo(n - 1) + ways_memo(n - 2)
+
+n = int(input("Enter number of steps: "))
+
+if n < 0:
+    print("Enter a positive number")
+else:
+    calls = 0
+    print("Naive Result:", ways_naive(n))
+    print("Naive Calls:", calls)
+
+    calls = 0
+    ways_memo.cache_clear()
+
+    print("Memo Result:", ways_memo(n))
+    print("Memo Calls:", calls)
