@@ -1,0 +1,32 @@
+def normalise(text):
+    return text.replace(" ", "").replace("-", "").upper()
+
+def is_valid(reg):
+    if len(reg) not in (9, 10):
+        return False
+
+    if not reg[:2].isalpha():
+        return False
+
+    if not reg[2:4].isdigit():
+        return False
+
+    if len(reg) == 9:
+        if not reg[4:5].isalpha():
+            return False
+    else:
+        if not reg[4:6].isalpha():
+            return False
+
+    return reg[-4:].isdigit()
+
+raw = input("Enter vehicle number: ")
+reg = normalise(raw)
+
+print("Normalized:", reg)
+
+if is_valid(reg):
+    print("Valid")
+    print("Formatted:", reg[:2] + " " + reg[2:4] + " " + reg[4:-4] + " " + reg[-4:])
+else:
+    print("INVALID")
