@@ -1,0 +1,28 @@
+#task5
+def add_item(item, order=None):
+    if order is None:
+        order = []
+    order.append(item)
+    return order
+
+n = int(input("How many items? "))
+order = []
+
+for i in range(n):
+    item = input("Enter item: ")
+    add_item(item, order)
+
+print("Final Order:", order)
+
+def calculate(a, b):
+    total = a + b
+    gst = total * 0.18
+    return total, gst
+
+a = float(input("Enter first amount: "))
+b = float(input("Enter second amount: "))
+
+total, gst = calculate(a, b)
+
+print("Total:", total)
+print("GST:", gst)
