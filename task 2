@@ -1,0 +1,20 @@
+#task2
+correct_otp = "1234"
+attempts = 0
+
+while attempts < 3:
+    otp = input("Enter OTP: ")
+
+    if otp == "":
+        print("Blank entry not counted")
+        continue
+
+    if otp == correct_otp:
+        print("Login Successful")
+        break
+    else:
+        attempts += 1
+        print("Wrong OTP")
+
+else:
+    print("Account Locked")
