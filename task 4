@@ -1,0 +1,30 @@
+import time
+
+n = int(input("Enter number of lines: "))
+items = []
+
+for i in range(n):
+    item = input("Enter item: ")
+    items.append(item)
+
+def build_plus(parts):
+    text = ""
+    for p in parts:
+        text += p + "+"
+    return text
+
+def build_join(parts):
+    return "+".join(parts) + "+"
+
+start = time.perf_counter()
+a = build_plus(items)
+t_plus = time.perf_counter() - start
+
+start = time.perf_counter()
+b = build_join(items)
+t_join = time.perf_counter() - start
+
+print("Same text:", a == b)
+print("Length:", len(a))
+print("Plus time:", t_plus)
+print("Join time:", t_join)
