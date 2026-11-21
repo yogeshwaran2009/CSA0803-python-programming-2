@@ -1,0 +1,35 @@
+#task7
+import time
+
+def original_method(items):
+    text = ""
+    for item in items:
+        text += item + "\n"
+    return text
+
+def redesigned_method(items):
+    return "\n".join(items) + "\n"
+
+n = int(input("Enter number of items: "))
+items = []
+
+for i in range(n):
+    item = input("Enter item: ")
+    items.append(item)
+
+start = time.perf_counter()
+a = original_method(items)
+t1 = time.perf_counter() - start
+
+start = time.perf_counter()
+b = redesigned_method(items)
+t2 = time.perf_counter() - start
+
+print("Original Time:", t1)
+print("Redesigned Time:", t2)
+print("Same Output:", a == b)
+
+if t2 < t1:
+    print("Redesigned method is faster")
+else:
+    print("Original method is faster")
